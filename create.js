@@ -1,17 +1,7 @@
 import * as uuid from "uuid";
 import handler from "./libs/handler-lib";
 import dynamoDb from "./libs/dynamodb-lib";
-
-//functions to return current date time of the caller in YYYY-MM-DD HH24:MI:SS format
-function getDateStr() {
-    const curdate = new Date();
-    return curdate.getFullYear() + "-" +
-        ("00" + (curdate.getMonth() + 1)).slice(-2) + "-" +
-        ("00" + curdate.getDate()).slice(-2) + " " +
-        ("00" + curdate.getHours()).slice(-2) + ":" +
-        ("00" + curdate.getMinutes()).slice(-2) + ":" +
-        ("00" + curdate.getSeconds()).slice(-2);
-}
+import * as mylib from "./libs/my-lib";
 
 export const main = handler(async (event, context) => {
     const data = JSON.parse(event.body);
@@ -30,7 +20,7 @@ export const main = handler(async (event, context) => {
             noteId: uuid.v1(),
             content: data.content,
             attachment: data.attachment,
-            createdAt: getDateStr()
+            createdAt: mylib.getDateStr()
         }
     };
 

@@ -23,6 +23,7 @@
     "typescript": "^3.9.5"
   },
   "dependencies": {
+    "stripe": "^8.119.0",
     "uuid": "^7.0.3"
   }
 }
